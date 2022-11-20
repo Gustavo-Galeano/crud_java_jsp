@@ -52,7 +52,7 @@ public class CategoriaController {
         boolean valor = false;
         if (Conexion.conectar()) {
           String sql = " update categorias set descripcion = '"+categoria.getDescripcion()+"' where id_categoria='"+categoria.getId_categoria()+"' ";
-          System.out.println("-->" + sql);
+          System.out.println("-->" + "\n" + sql);
           try {
        	      Conexion.getSt().executeUpdate(sql);
               valor = true;
