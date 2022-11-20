@@ -1,18 +1,18 @@
-<%@page import="Controller.CategoriaController"%>
+<%@page import="Controller.ProveedorController"%>
+<%@page import="Model.Proveedor"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@page import="Model.Categoria"%>
 <%@page import="java.sql.ResultSet"%>
 
 <%
-    int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
+    int id_proveedor = Integer.parseInt(request.getParameter("id_proveedor"));
     
     String tipo = "error";
     String mensaje = "Datos elimiados";
     
-    Categoria categoria = new Categoria();
-    categoria.setId_categoria(id_categoria);
+    Proveedor proveedor = new Proveedor();
+    proveedor.setId_proveedor(id_proveedor);
     
-    if (CategoriaController.eliminar(categoria)) {
+    if (ProveedorController.eliminar(proveedor)) {
         tipo = "success";        
         mensaje = "Datos eliminados";
     }

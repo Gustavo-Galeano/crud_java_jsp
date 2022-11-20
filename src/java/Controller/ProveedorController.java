@@ -49,6 +49,20 @@ public class ProveedorController {
         }
         return valor;
     }
+    
+        public static boolean eliminar(Proveedor proveedor) {
+        boolean valor = false;
+        if (Conexion.conectar()) {
+            String sql = " delete from proveedores where id_proveedor = " + proveedor.getId_proveedor() + " ";
+            try {
+                Conexion.getSt().executeUpdate(sql);
+                valor = true;
+            } catch (SQLException ex) {
+                System.err.println("error" + ex);
+            }
+        }
+        return valor;
+    }
 
     public static Proveedor buscarId(Proveedor proveedor) {
         if (Conexion.conectar()) {

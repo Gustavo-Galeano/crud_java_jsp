@@ -24,7 +24,7 @@ function agregarProveedor() {
 }
 
 
-function eliminarCategoria() {
+function eliminarProveedor() {
     var datosFormulario = $("#formPrograma").serialize();
     $.ajax({
         type: 'POST',
@@ -37,8 +37,8 @@ function eliminarCategoria() {
         success: function (json) {
             $("#mensajes").html(json.mensaje);
             limpiarFormulario();
-            $("#id_categoria").focus();
-            $("#id_categoria").select();
+            $("#id_proveedor").focus();
+            $("#id_proveedor").select();
         },
         error: function (e) {
             $("#mensajes").html("No se pudo modificar los datos.");
