@@ -27,7 +27,7 @@
               <input type="email" class="form-control" id="id_proveedor" name="id_proveedor" placeholder="ID">
             </div>
             <div class="col-md-1">
-              <button id="botonBuscarIdCategoria" type="button" class="btn btn-primary btn-sm">
+              <button id="botonBuscarIdProveedor" type="button" class="btn btn-primary ">
                 <i class='bx bx-search-alt-2'></i>
               </button>
             </div>
@@ -122,30 +122,30 @@
     $("#buscar").css("display", "none");
     $("#id_proveedor").focus();
 
-    // $("#botonModificar").on('click', function () {
-    //   modificarCategoria();
-    // });
+    $("#botonModificar").on('click', function () {
+      modificarCategoria();
+    });
 
     $("#botonAgregar").on('click', function () {
       agregarProveedor();
     });
 
-    // $("#id_categoria").focus(function (event) {
-    //   if ($("#id_categoria").val() === "") {
-    //     $("#id_categoria").val("0");
-    //   }
-    //   buscarIdCategoria();
-    // });
-    // $("#botonBuscarIdCategoria").on('click', function () {
-    //   $("#buscar").load("buscar.html");
-    //   $("#buscar").fadeIn("slow");
-    //   $("#panelPrograma").fadeOut("slow");
-    // });
+    $("#id_proveedor").focus(function (event) {
+      if ($("#id_proveedor").val() === "") {
+        $("#id_proveedor").val("0");
+      }
+      buscarIdProveedor();
+    });
+    $("#botonBuscarIdProveedor").on('click', function () {
+      $("#buscar").load("buscar.html");
+      $("#buscar").fadeIn("slow");
+      $("#panelPrograma").fadeOut("slow");
+    });
 
-    // $("#botonEliminarAlert").on('click', function () {
-    //   eliminarCategoria();
-    //   $('#confirmarEliminar').modal('hide');
-    // });
+    $("#botonEliminarAlert").on('click', function () {
+      eliminarCategoria();
+      $('#confirmarEliminar').modal('hide');
+    });
   </script>
 </body>
 
