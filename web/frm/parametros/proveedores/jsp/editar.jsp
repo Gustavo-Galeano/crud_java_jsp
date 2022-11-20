@@ -1,22 +1,27 @@
 
-<%@page import="Controller.CategoriaController"%>
-<%@page import="Model.Categoria"%>
+<%@page import="Controller.ProveedorController"%>
+<%@page import="Model.Proveedor"%>
 <%@page import="org.json.simple.JSONObject"%>
-
 <%@page import="java.sql.ResultSet"%>
 
 <%
-    int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
-    String descripcion = request.getParameter("descripcion_categoria");
+    int id_proveedor = Integer.parseInt(request.getParameter("id_proveedor"));
+    String nombre = request.getParameter("nombre_proveedor");
+    String email = request.getParameter("email_proveedor");
+    String web = request.getParameter("web_proveedor");
+    String direccion = request.getParameter("direccion_proveedor");
 
     String tipo = "error";
     String mensaje = "Datos no modificados";
 
-    Categoria categoria = new Categoria();
-    categoria.setId_categoria(id_categoria);
-    categoria.setDescripcion(descripcion);
+    Proveedor proveedor = new Proveedor();
+    proveedor.setId_proveedor(id_proveedor);
+    proveedor.setNombre(nombre);
+    proveedor.setEmail(email);
+    proveedor.setWeb(web);
+    proveedor.setDireccion(direccion);
 
-    if (CategoriaController.editar(categoria)) {
+    if (ProveedorController.editar(proveedor)) {
         tipo = "success";
         mensaje = "Datos modificados";
     }

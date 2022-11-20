@@ -50,7 +50,7 @@ function eliminarCategoria() {
     });
 }
 
-function modificarCategoria() {
+function modificarProveedor() {
     var datosFormulario = $("#formPrograma").serialize();
     $.ajax({
         type: 'POST',
@@ -63,7 +63,7 @@ function modificarCategoria() {
         success: function (json) {
             $("#mensajes").html(json.mensaje);
             limpiarFormulario();
-            $("#descripcion_categoria").focus();
+            $("#nombre_proveedor").focus();
         },
         error: function (e) {
             $("#mensajes").html("Error al modificar los datos");
@@ -92,7 +92,6 @@ function buscarIdProveedor() {
             $("#email_proveedor").val(json.email_proveedor);
             $("#web_proveedor").val(json.web_proveedor);
             $("#direccion_proveedor").val(json.direccion_proveedor);
-
             if (json.nuevo === "true") {
                 $("#botonAgregar").prop('disabled', false);
                 $("#botonModificar").prop('disabled', false);
@@ -114,7 +113,6 @@ function buscarIdProveedor() {
             }
         }
     });
-
 }
 
 function buscarNombreProveedor() {
@@ -157,4 +155,7 @@ function buscarNombreProveedor() {
 function limpiarFormulario() {
     $("#id_categoria").val("0");
     $("#nombre_proveedor").val("");
+    $("#email_proveedor").val("");
+    $("#web_proveedor").val("");
+    $("#direccion_proveedor").val("");
 }

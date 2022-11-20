@@ -23,8 +23,7 @@ public class ProveedorController {
         boolean valor = false;
         if (Conexion.conectar()) {
             String sql = " insert into proveedores(nombre, email, web, direccion)values"
-                    + "('" + proveedor.getNombre() + "', '" + proveedor.getEmail() + "', "
-                    + "'" + proveedor.getWeb() + "', '" + proveedor.getDireccion() + "')";
+                    + "('" + proveedor.getNombre() + "', '" + proveedor.getEmail() + "', '" + proveedor.getWeb() + "', '" + proveedor.getDireccion() + "')";
             try {
                 Conexion.getSt().executeUpdate(sql);
                 valor = true;
@@ -32,6 +31,21 @@ public class ProveedorController {
                 System.err.println("error" + ex);
             }
             System.out.println("valor" + valor);
+        }
+        return valor;
+    }
+
+    public static boolean editar(Proveedor proveedor) {
+        boolean valor = false;
+        if (Conexion.conectar()) {
+            String sql = " update proveedores set nombre = '" + proveedor.getNombre()+ "', email='"+proveedor.getEmail()+"', web='"+proveedor.getWeb()+"', direccion='"+proveedor.getDireccion()+"'  where id_proveedor='" + proveedor.getId_proveedor() + "' ";
+            System.out.println("-->"+ "\n" + sql);
+            try {
+                Conexion.getSt().executeUpdate(sql);
+                valor = true;
+            } catch (SQLException ex) {
+                System.err.println("error" + ex);
+            }
         }
         return valor;
     }
@@ -47,7 +61,7 @@ public class ProveedorController {
                     proveedor.setEmail(rs.getString("email"));
                     proveedor.setWeb(rs.getString("web"));
                     proveedor.setDireccion(rs.getString("direccion"));
-                    
+
                 } else {
                     proveedor.setId_proveedor(0);
                     proveedor.setNombre("");
@@ -61,8 +75,8 @@ public class ProveedorController {
         }
         return proveedor;
     }
-    
-     public static String buscarNombre(String nombre, int pagina) {
+
+    public static String buscarNombre(String nombre, int pagina) {
 
         int offset = (pagina - 1) * Utiles.REGISTROS_PAGINA;
         String valor = "";
