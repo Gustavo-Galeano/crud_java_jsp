@@ -74,7 +74,7 @@ function modificarCategoria() {
     });
 }
 
-function buscarIdCategoria() {
+function buscarIdProveedor() {
     var datosFormulario = $("#formPrograma").serialize();
 
     $.ajax({
@@ -87,19 +87,22 @@ function buscarIdCategoria() {
         },
         success: function (json) {
             $("#mensajes").html(json.mensaje);
-            $("#id_categoria").val(json.id_categoria);
-            $("#descripcion_categoria").val(json.descripcion_categoria);
+            $("#id_proveedor").val(json.id_proveedor);
+            $("#nombre_proveedor").val(json.nombre_proveedor);
+            $("#email_proveedor").val(json.email_proveedor);
+            $("#web_proveedor").val(json.web_proveedor);
+            $("#direccion_proveedor").val(json.direccion_proveedor);
 
             if (json.nuevo === "true") {
                 $("#botonAgregar").prop('disabled', false);
                 $("#botonModificar").prop('disabled', false);
                 $("#botonEliminar").prop('disabled', true);
-                siguienteCampo("#descripcion_categoria", "#botonAgregar", true);
+                siguienteCampo("#nombre_proveedor", "#botonAgregar", true);
             } else {
                 $("#botonAgregar").prop('disabled', true);
                 $("#botonModificar").prop('disabled', false);
                 $("#botonEliminar").prop('disabled', false);
-                siguienteCampo("#descripcion_categoria", "#botonModificar", true);
+                siguienteCampo("#nombre_proveedor", "#botonModificar", true);
             }
         },
         error: function (e) {
@@ -114,7 +117,7 @@ function buscarIdCategoria() {
 
 }
 
-function buscarNombreCategoria() {
+function buscarNombreProveedor() {
     var datosFormulario = $("#formBuscar").serialize();
 
     $.ajax({
@@ -133,9 +136,9 @@ function buscarNombreCategoria() {
             $("tbody tr").on("click", function () {
                 var id = $(this).find("td:first").html();
                 $("#panelBuscar").html("");
-                $("#id_categoria").val(id);
-                $("#descripcion_categoria").focus();
-                buscarIdCategoria();
+                $("#id_proveedor").val(id);
+                $("#nombre_proveedor").focus();
+                buscarIdProveedor();
                 $("#buscar").fadeOut("slow");
                 $("#panelPrograma").fadeIn("slow");
             });
@@ -153,5 +156,5 @@ function buscarNombreCategoria() {
 
 function limpiarFormulario() {
     $("#id_categoria").val("0");
-    $("#descripcion_categoria").val("");
+    $("#nombre_proveedor").val("");
 }

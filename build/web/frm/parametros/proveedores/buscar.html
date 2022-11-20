@@ -1,5 +1,5 @@
 <div id="panelBuscar" class="panel panel-primary">
-    <div class="panel-heading centrado">Buscar Categoria</div>
+    <div class="panel-heading centrado">Buscar Proveedor</div>
 
     <div class="panel-body">
         <form id="formBuscar">
@@ -7,15 +7,15 @@
             <div class="row">
                 <div class="form-group col-md-1">
                     <!-- <span>Nombre</span> -->
-                    <label for="bdescripcion_categoria" class="">Nombre</label>
+                    <label for="bnombre_proveedor" class="">Nombre</label>
 
                 </div>
                 <div class="form-group col-md-9">
-                    <input id="bdescripcion_categoria" name="bdescripcion_categoria" type="text"
+                    <input id="bnombre_proveedor" name="bnombre_proveedor" type="text"
                         class="form-control input-sm" placeholder="Nombre">
                 </div>
                 <div class="col-md-2">
-                    <button id="botonBuscar" type="button" class="btn btn-primary btn-sm">Buscar</button>
+                    <button id="botonBuscar" type="button" class="btn btn-primary ">Buscar</button>
                 </div>
             </div>
         </form>
@@ -28,18 +28,14 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
+                        <th>email</th>
+                        <th>Web</th>
+                        <th>Direccion</th>
                     </tr>
                 </thead>
                 <tbody id="contenidoBusqueda">
                 </tbody>
             </table>
-
-            <!-- <nav>
-                <ul class="pager">
-                    <li id="anterior"><a href="#"><span aria-hidden="true">&larr;</span> Anterior</a></li>
-                    <li id="siguiente"><a href="#">Siguiente <span aria-hidden="true">&rarr;</span></a></li>
-                </ul>
-            </nav> -->
 
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
@@ -61,14 +57,14 @@
 </div>
 <script>
 
-    buscarNombreCategoria();
-    $("#bdescripcion_categoria").focus();
+    buscarNombreProveedor();
+    $("#bnombre_proveedor").focus();
 
     $("#botonBuscar").on("click", function () {
         $("#contenidoBusqueda").html("");
         $("#bpagina").val("1");
-        buscarNombreCategoria();
-        $("#bdescripcion_categoria").focus();
+        buscarNombreProveedor();
+        $("#bnombre_proveedor").focus();
     });
     $("#anterior").on("click", function () {
         $("#contenidoBusqueda").html("");
@@ -76,13 +72,13 @@
         if (pag > 1) {
             $("#bpagina").val(pag - 1);
         }
-        buscarNombreCategoria();
+        buscarNombreProveedor();
     });
     $("#siguiente").on("click", function () {
         $("#contenidoBusqueda").html("");
         var pag = parseInt($("#bpagina").val());
         $("#bpagina").val(pag + 1);
-        buscarNombreCategoria();
+        buscarNombreProveedor();
     });
 
     $("#botonSalirBuscar").on('click', function () {

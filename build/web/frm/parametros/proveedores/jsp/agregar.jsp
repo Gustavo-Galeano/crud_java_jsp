@@ -8,8 +8,8 @@
 <%
     //int id_proveedor = Integer.parseInt(request.getParameter("id_personal"));
     String nombre = request.getParameter("nombre_proveedor");
-    String apellido = request.getParameter("apellido_proveedor");
     String email = request.getParameter("email_proveedor");
+    String web = request.getParameter("web_proveedor");
     String direccion = request.getParameter("direccion_proveedor");
     
     
@@ -20,6 +20,7 @@
     //proveedor.setId_proveedor(id_proveedor);
     proveedor.setNombre(nombre);
     proveedor.setEmail(email);
+    proveedor.setWeb(web);
     proveedor.setDireccion(direccion);
     
     if (ProveedorController.agregar(proveedor)) {

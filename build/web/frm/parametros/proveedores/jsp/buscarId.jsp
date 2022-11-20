@@ -1,21 +1,21 @@
-<%@page import="Controller.CategoriaController"%>
+<%@page import="Controller.ProveedorController"%>
+<%@page import="Model.Proveedor"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@page import="Model.Categoria"%>
 <%@page import="java.sql.ResultSet" %>
 
 <%
-    int id_categoria = Integer.parseInt(request.getParameter("id_categoria"));
+    int id_proveedor = Integer.parseInt(request.getParameter("id_proveedor"));
 
     String tipo = "error";
     String mensaje = "Datos no encontrados";
     String nuevo = "true";
 
-    Categoria categoria = new Categoria();
-    categoria.setId_categoria(id_categoria);
+    Proveedor proveedor = new Proveedor();
+    proveedor.setId_proveedor(id_proveedor);
+
+    proveedor = ProveedorController.buscarId(proveedor);
     
-    categoria = CategoriaController.buscarId(categoria);
-    
-    if (categoria.getId_categoria() != 0) {
+    if (proveedor.getId_proveedor()!= 0) {
         tipo = "success";
         mensaje = "Datos encontrados";
         nuevo = "false";
@@ -25,9 +25,12 @@
     obj.put("tipo", tipo);
     obj.put("mensaje", mensaje);
     obj.put("nuevo", nuevo);
-    obj.put("id_categoria", categoria.getId_categoria());
-    obj.put("descripcion_categoria", categoria.getDescripcion());
-
+    obj.put("id_proveedor", proveedor.getId_proveedor());
+    obj.put("nombre_proveedor", proveedor.getNombre());
+    obj.put("email_proveedor", proveedor.getEmail());
+    obj.put("web_proveedor", proveedor.getWeb());
+    obj.put("direccion_proveedor", proveedor.getDireccion());
+    
     out.print(obj);
     out.flush();
 %> 
