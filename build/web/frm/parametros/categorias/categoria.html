@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="../../../css/bootstrap/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div id="confirmar"></div>
+
+    <div id="buscar"></div>
+
+    <div id="panelPrograma">
+      <div id="panel-body">
+        <form id="formPrograma">
+          <div class="row">
+            <div class="col-md-1">
+              <span>Id</span>
+            </div>
+            <div class="form-group col-md-1">
+              <!-- <label for="id_categoria">Email address</label> -->
+              <input type="email" class="form-control" id="id_categoria" name="id_categoria" placeholder="ID">
+            </div>
+            <div class="col-md-1">
+              <button id="botonBuscarIdCategoria" type="button" class="btn btn-primary btn-sm">
+                <i class='bx bx-search-alt-2'></i>
+              </button>
+            </div>
+          </div>
+
+          <div id="row">
+            <div class="col-md-1">
+              <span>Descripcion</span>
+            </div>
+            <div class="col-md-11">
+              <input type="text" class="form-control" id="descripcion_categoria" name="descripcion_categoria"
+                placeholder="Descripcion" onkeyup="this.value = this.value.toUpperCase()">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel-footer mt-4">
+        <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
+        <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
+        <button id="botonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+          data-target="#confirmarEliminar">Eliminar</button>
+        <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+      </div>
+
+      <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
+
+      <div class="modal fade" id="confirmarEliminar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+
+            <div class="modal-header centrado">
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Mensaje del Sistema</h4>
+            </div>
+
+            <div class="modal-body">
+              Está seguro de eliminar estos datos?
+            </div>
+
+            <div class="modal-footer centrado">
+              <button id="botonEliminarAlert" type="button" class="btn btn-primary btn-sm">Eliminar</button>
+              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancelar</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../../../js/jquery.min.js"></script>
+  <script src="../../../js/bootstrap/bootstrap.min.js"></script>
+  <script src="js/funciones.js"></script>
+  <script src="../../../js/funciones.js" type="text/javascript"></script>
+  <script>
+    $("#buscar").css("display", "none");
+    $("#id_categoria").focus();
+
+    $("#botonModificar").on('click', function () {
+      modificarCategoria();
+    });
+
+    $("#botonAgregar").on('click', function () {
+      agregarCategoria();
+    });
+
+    $("#id_categoria").focus(function (event) {
+      if ($("#id_categoria").val() === "") {
+        $("#id_categoria").val("0");
+      }
+      buscarIdCategoria();
+    });
+    $("#botonBuscarIdCategoria").on('click', function () {
+      $("#buscar").load("buscar.html");
+      $("#buscar").fadeIn("slow");
+      $("#panelPrograma").fadeOut("slow");
+    });
+
+    $("#botonEliminarAlert").on('click', function () {
+      eliminarCategoria();
+      $('#confirmarEliminar').modal('hide');
+    });
+  </script>
+</body>
+
+</html>
