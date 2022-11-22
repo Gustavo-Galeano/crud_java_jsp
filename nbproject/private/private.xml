@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/personales/personal.html</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/personales/js/funciones.js</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/personales/jsp/buscarId.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/src/java/Controller/PersonalController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/clientes/cliente.html</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/personales/jsp/agregar.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/personales/jsp/buscarNombre.jsp</file>
+        </group>
     </open-files>
 </project-private>

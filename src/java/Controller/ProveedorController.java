@@ -5,7 +5,6 @@
  */
 package Controller;
 
-import Model.Categoria;
 import Model.Proveedor;
 import Util.Conexion;
 import Util.Utiles;

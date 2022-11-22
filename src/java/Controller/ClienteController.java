@@ -35,10 +35,10 @@ public class ClienteController {
         return valor;
     }
 
-        public static boolean eliminar(Cliente cliente) {
+    public static boolean eliminar(Cliente cliente) {
         boolean valor = false;
         if (Conexion.conectar()) {
-            String sql = " delete from clientes where id_cliente = " + cliente.getId_cliente()+ " ";
+            String sql = " delete from clientes where id_cliente = " + cliente.getId_cliente() + " ";
             try {
                 Conexion.getSt().executeUpdate(sql);
                 valor = true;
@@ -48,12 +48,14 @@ public class ClienteController {
         }
         return valor;
     }
-    
+
     public static boolean editar(Cliente cliente) {
         boolean valor = false;
         if (Conexion.conectar()) {
-            String sql = " update clientes set nombre = '" + cliente.getNombre() + "', apellido='" + cliente.getApellido() + "', "
-                    + " ruc='" + cliente.getRuc() + "', telefono='" + cliente.getTelefono() + "'  where id_cliente='" + cliente.getId_cliente() + "' ";
+            String sql = " update clientes set nombre = '" + cliente.getNombre() + "', apellido='"
+                    + cliente.getApellido() + "', "
+                    + " ruc='" + cliente.getRuc() + "', telefono='" + cliente.getTelefono() + "'  where id_cliente='"
+                    + cliente.getId_cliente() + "' ";
             System.out.println("-->" + sql);
             try {
                 Conexion.getSt().executeUpdate(sql);
