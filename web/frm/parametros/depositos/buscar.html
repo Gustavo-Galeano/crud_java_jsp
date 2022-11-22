@@ -1,0 +1,84 @@
+<div id="panelBuscar" class="panel panel-primary">
+    <div class="panel-heading centrado">Buscar Cliente</div>
+
+    <div class="panel-body">
+        <form id="formBuscar">
+            <input type="hidden" id="bpagina" name="bpagina" value="1" />
+            <div class="row">
+                <div class="form-group col-md-1">
+                    <label for="bnombre_deposito" class="">Nombre</label>
+                </div>
+                <div class="form-group col-md-9">
+                    <input id="bnombre_deposito" name="bnombre_deposito" type="text"
+                        class="form-control input-sm" placeholder="Nombre">
+                </div>
+                <div class="col-md-2">
+                    <button id="botonBuscar" type="button" class="btn btn-primary ">Buscar</button>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        <div id="resultado">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody id="contenidoBusqueda">
+                </tbody>
+            </table>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" id="anterior">
+                        <a class="page-link" href="#">Anterior</a>
+                    </li>
+                    <li class="page-item" id="siguiente">
+                        <a class="page-link" href="#">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+
+    </div>
+    <div class="panel-footer centrado">
+        <button id="botonSalirBuscar" type="button" class="btn btn-primary btn-sm">Salir</button>
+    </div>
+</div>
+<script>
+
+    buscarNombreDeposito();
+    $("#bnombre_deposito").focus();
+
+    $("#botonBuscar").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        $("#bpagina").val("1");
+        buscarNombreDeposito();
+        $("#bnombre_deposito").focus();
+    });
+    $("#anterior").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        if (pag > 1) {
+            $("#bpagina").val(pag - 1);
+        }
+        buscarNombreDeposito();
+    });
+    $("#siguiente").on("click", function () {
+        $("#contenidoBusqueda").html("");
+        var pag = parseInt($("#bpagina").val());
+        $("#bpagina").val(pag + 1);
+        buscarNombreDeposito();
+    });
+
+    $("#botonSalirBuscar").on('click', function () {
+        $("#buscar").fadeOut("slow");
+        $("#panelPrograma").fadeIn("slow");
+    });
+
+</script>

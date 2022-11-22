@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "proyecto_final",
+            "database": "bambu_sa",
+            "username": "postgres"
+        }
+    ]
+}
