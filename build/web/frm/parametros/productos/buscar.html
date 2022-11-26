@@ -1,5 +1,5 @@
 <div id="panelBuscar" class="panel panel-primary">
-    <div class="panel-heading centrado">Buscar Cliente</div>
+    <div class="panel-heading centrado">Buscar Producto</div>
 
     <div class="panel-body">
         <form id="formBuscar">
@@ -7,11 +7,11 @@
             <div class="row">
                 <div class="form-group col-md-1">
                     <!-- <span>Nombre</span> -->
-                    <label for="bnombre_cliente" class="">Nombre</label>
+                    <label for="bnombre_producto" class="">Nombre</label>
 
                 </div>
                 <div class="form-group col-md-9">
-                    <input id="bnombre_cliente" name="bnombre_cliente" type="text"
+                    <input id="bnombre_producto" name="bnombre_producto" type="text"
                         class="form-control input-sm" placeholder="Nombre">
                 </div>
                 <div class="col-md-2">
@@ -28,9 +28,9 @@
                     <tr>
                         <th>Id</th>
                         <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Ruc</th>
-                        <th>Telefono</th>
+                        <th>Precio</th>
+                        <th>Iva</th>
+                        <th>Categoria</th>
                     </tr>
                 </thead>
                 <tbody id="contenidoBusqueda">
@@ -57,14 +57,14 @@
 </div>
 <script>
 
-    buscarNombreCliente();
-    $("#bnombre_cliente").focus();
+    buscarNombreProducto();
+    $("#bnombre_producto").focus();
 
     $("#botonBuscar").on("click", function () {
         $("#contenidoBusqueda").html("");
         $("#bpagina").val("1");
-        buscarNombreCliente();
-        $("#bnombre_cliente").focus();
+        buscarNombreProducto();
+        $("#bnombre_producto").focus();
     });
     $("#anterior").on("click", function () {
         $("#contenidoBusqueda").html("");
@@ -72,13 +72,13 @@
         if (pag > 1) {
             $("#bpagina").val(pag - 1);
         }
-        buscarNombreCliente();
+        buscarNombreProducto();
     });
     $("#siguiente").on("click", function () {
         $("#contenidoBusqueda").html("");
         var pag = parseInt($("#bpagina").val());
         $("#bpagina").val(pag + 1);
-        buscarNombreCliente();
+        buscarNombreProducto();
     });
 
     $("#botonSalirBuscar").on('click', function () {

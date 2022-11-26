@@ -37,11 +37,11 @@ function eliminarProducto() {
         success: function (json) {
             $("#mensajes").html(json.mensaje);
             limpiarFormulario();
-            $("#id_producto").focus();
-            $("#id_producto").select();
+            $("#id_cliente").focus();
+            $("#id_cliente").select();
         },
         error: function (e) {
-            $("#mensajes").html("No se pudo eliminar los datos.");
+            $("#mensajes").html("No se pudo modificar los datos.");
         },
         complete: function (objeto, exito, error) {
             if (exito === "success") {
@@ -63,7 +63,7 @@ function modificarProducto() {
         success: function (json) {
             $("#mensajes").html(json.mensaje);
             limpiarFormulario();
-            $("#nombre_producto").focus();
+            $("#nombre_cliente").focus();
         },
         error: function (e) {
             $("#mensajes").html("Error al modificar los datos");

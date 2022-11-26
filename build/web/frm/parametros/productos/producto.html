@@ -15,52 +15,81 @@
     <div id="confirmar"></div>
 
     <div id="buscar"></div>
+    <div id="buscarIva"></div>
+    <div id="buscarCategoria"></div>
+
 
     <div id="panelPrograma">
       <div id="panel-body">
         <form id="formPrograma">
+
+
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
               <span>Id producto</span>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-9">
               <input type="text" class="form-control" id="id_producto" name="id_producto" placeholder="ID">
             </div>
-            <div class="col-md-2">
-              <button id="botonBuscarIdPoducto" type="button" class="btn btn-primary ">
+            <div class="col-md-1">
+              <button id="botonBuscarIdProducto" type="button" class="btn btn-primary ">
                 <i class='bx bx-search-alt-2'></i>
               </button>
             </div>
           </div>
 
+          <hr>
 
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
               <span>Id categoria</span>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-9">
               <input type="text" class="form-control" id="id_categoria" name="id_categoria" placeholder="ID">
             </div>
-            <div class="col-md-2">
-              <button id="botonBuscarIdCategoria" type="button" class="btn btn-primary ">
+            <div class="col-md-1">
+              <button id="botonBuscarCategoria" type="button" class="btn btn-primary ">
                 <i class='bx bx-search-alt-2'></i>
               </button>
             </div>
           </div>
+          <div id="row">
+            <div class="col-md-2">
+              <span>Categoria</span>
+            </div>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="descripcion_categoria" name="descripcion_categoria"
+                placeholder="Categoria" onkeyup="this.value = this.value.toUpperCase()">
+            </div>
+          </div>
+
+          <hr>
 
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
               <span>Id iva</span>
             </div>
-            <div class="form-group col-md-7">
+            <div class="form-group col-md-9">
               <input type="text" class="form-control" id="id_iva" name="id_iva" placeholder="ID">
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               <button id="botonBuscarIdIva" type="button" class="btn btn-primary ">
                 <i class='bx bx-search-alt-2'></i>
               </button>
             </div>
           </div>
+
+          <div id="row">
+            <div class="col-md-3">
+              <span>Valor</span>
+            </div>
+            <div class="col-md">
+              <input type="text" class="form-control" id="valor_iva" name="valor_iva"
+                placeholder="Nombre" onkeyup="this.value = this.value.toUpperCase()">
+            </div>
+          </div>
+
+          <hr>
 
 
           <div id="row">
@@ -83,7 +112,7 @@
             </div>
           </div>
 
-       
+
 
         </form>
       </div>
@@ -132,32 +161,49 @@
   <script src="../../../js/funciones.js" type="text/javascript"></script>
   <script>
     $("#buscar").css("display", "none");
-    $("#id_cliente").focus();
+    $("#id_producto").focus();
 
     $("#botonModificar").on('click', function () {
-      modificarCliente();
+      modificarProducto();
     });
 
     $("#botonAgregar").on('click', function () {
-      agregarCliente();
+      agregarProducto();
     });
 
-    $("#id_cliente").focusOut(function (event) {
-      if ($("#id_cliente").val() === "") {
-        $("#id_cliente").val("0");
+    $("#id_producto").focusout(function (event) {
+      if ($("#id_producto").val() === "") {
+        $("#id_producto").val("0");
       }
-      buscarIdCliente();
+      buscarIdProducto();
     });
-    $("#botonBuscarIdCliente").on('click', function () {
+    $("#botonBuscarIdProducto").on('click', function () {
       $("#buscar").load("buscar.html");
       $("#buscar").fadeIn("slow");
       $("#panelPrograma").fadeOut("slow");
     });
 
     $("#botonEliminarAlert").on('click', function () {
-      eliminarCliente();
+      eliminarProducto();
       $('#confirmarEliminar').modal('hide');
     });
+
+    /* Buscador de iva  */
+    // $("#buscarIva").css("display", "none");
+    $("#botonBuscarIdIva").on('click', function () {
+      $("#buscarIva").load("buscarIva.html");
+      $("#buscarIva").fadeIn("slow");
+      $("#panelPrograma").fadeOut("slow");
+    });
+
+    /* Buscador de categorias  */
+    // $("#buscarCategoria").css("display", "none");
+    $("#botonBuscarCategoria").on('click', function () {
+      $("#buscarCategoria").load("buscarCategoria.html");
+      $("#buscarCategoria").fadeIn("slow");
+      $("#panelPrograma").fadeOut("slow");
+    });
+
   </script>
 </body>
 

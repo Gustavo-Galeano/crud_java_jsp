@@ -15,23 +15,20 @@ public class Producto {
     private String nombre;
     private int precio;
 
-    private int id_categoria;
+    private Categoria categoria;
 
-    private int id_existencia;
-    private int proveedor;
-    private int id_iva;
+    private Iva iva;
 
     public Producto() {
+    
     }
 
-    public Producto(int id_producto, String nombre, int precio, int id_categoria, int id_existencia, int proveedor, int id_iva) {
+    public Producto(int id_producto, String nombre, int precio, Categoria categoria, Iva iva) {
         this.id_producto = id_producto;
         this.nombre = nombre;
         this.precio = precio;
-        this.id_categoria = id_categoria;
-        this.id_existencia = id_existencia;
-        this.proveedor = proveedor;
-        this.id_iva = id_iva;
+        this.categoria = categoria;
+        this.iva = iva;
     }
 
     public int getId_producto() {
@@ -58,35 +55,22 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getId_categoria() {
-        return id_categoria;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setId_categoria(int id_categoria) {
-        this.id_categoria = id_categoria;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
-    public int getId_existencia() {
-        return id_existencia;
+    public Iva getIva() {
+        return iva;
     }
 
-    public void setId_existencia(int id_existencia) {
-        this.id_existencia = id_existencia;
+    public void setIva(Iva iva) {
+        this.iva = iva;
     }
 
-    public int getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(int proveedor) {
-        this.proveedor = proveedor;
-    }
-
-    public int getId_iva() {
-        return id_iva;
-    }
-
-    public void setId_iva(int id_iva) {
-        this.id_iva = id_iva;
-    }
+    
+    
 }

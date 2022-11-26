@@ -9,6 +9,29 @@
             "name": "proyecto_final",
             "database": "bambu_sa",
             "username": "postgres"
+        },
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "muestra",
+            "database": "gustavo_galeano",
+            "username": "postgres"
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "name": "mysql-localhost",
+            "database": "proyecto_web2",
+            "username": "root"
         }
     ]
 }
