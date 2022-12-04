@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/productos/jsp/buscarNombre.jsp</file>
-            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/productos/jsp/buscarId.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/jsp/verificarSesion.jsp</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/src/java/Controller/PersonalController.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/frm/parametros/clientes/cliente.html</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/web/index.html</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/bambu_gustavo/src/java/Model/Personal.java</file>
         </group>
     </open-files>
 </project-private>

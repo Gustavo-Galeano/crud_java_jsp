@@ -17,26 +17,26 @@ public class Personal {
     private int cedula;
     private String telefono;
     private String email;
-    private String clave;
+        private String login_personal;
+    private String password_personal;
 
     public Personal() {
 
     }
 
-
-    public Personal(int id_personal, String nombre, String apellido, int cedula, String telefono, String email, String clave) {
+    public Personal(int id_personal, String nombre, String apellido, int cedula, String telefono, String email, String login_personal, String password_personal) {
         this.id_personal = id_personal;
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
         this.telefono = telefono;
         this.email = email;
-        this.clave = clave;
+        this.login_personal = login_personal;
+        this.password_personal = password_personal;
     }
 
-
     public int getId_personal() {
-        return this.id_personal;
+        return id_personal;
     }
 
     public void setId_personal(int id_personal) {
@@ -44,7 +44,7 @@ public class Personal {
     }
 
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
 
     public void setNombre(String nombre) {
@@ -52,7 +52,7 @@ public class Personal {
     }
 
     public String getApellido() {
-        return this.apellido;
+        return apellido;
     }
 
     public void setApellido(String apellido) {
@@ -60,7 +60,7 @@ public class Personal {
     }
 
     public int getCedula() {
-        return this.cedula;
+        return cedula;
     }
 
     public void setCedula(int cedula) {
@@ -68,7 +68,7 @@ public class Personal {
     }
 
     public String getTelefono() {
-        return this.telefono;
+        return telefono;
     }
 
     public void setTelefono(String telefono) {
@@ -76,20 +76,29 @@ public class Personal {
     }
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getClave() {
-        return this.clave;
+    public String getLogin_personal() {
+        return login_personal;
     }
 
-    public void setClave(String clave) {
-        this.clave = clave;
+    public void setLogin_personal(String login_personal) {
+        this.login_personal = login_personal;
     }
+
+    public String getPassword_personal() {
+        return password_personal;
+    }
+
+    public void setPassword_personal(String password_personal) {
+        this.password_personal = password_personal;
+    }
+
 
 }
     

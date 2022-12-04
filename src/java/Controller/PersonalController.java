@@ -11,6 +11,8 @@ import Util.Utiles;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -18,13 +20,50 @@ import java.sql.SQLException;
  */
 public class PersonalController {
 
+    public static Personal validarAcceso(Personal personal, HttpServletRequest request) {
+        if (Conexion.conectar()) {
+            try {
+                String sql = "select * from personales  "
+                        + "where login_personal='" + Utiles.quitarGuiones(personal.getLogin_personal())
+                        + "' and password_personal='" + Utiles.md5(Utiles.quitarGuiones(personal.getPassword_personal())) + "'";
+                try (PreparedStatement ps = Conexion.getConn().prepareStatement(sql)) {
+                    ResultSet rs = ps.executeQuery();
+                    System.out.println("---> " + sql);
+                    if (rs.next()) {
+                        HttpSession sesion = request.getSession(true);
+
+                        personal = new Personal();
+                        personal.setId_personal(rs.getInt("id_usuario"));
+                        personal.setNombre(rs.getString("nombre"));
+                        personal.setApellido(rs.getString("apellido"));
+                        personal.setCedula(rs.getInt("cedula"));
+                        personal.setTelefono(rs.getString("telefono"));
+                        personal.setEmail(rs.getString("email"));
+                        
+                        personal.setPassword_personal(rs.getString("nombre_usuario"));
+                        personal.setPassword_personal(rs.getString("password_usuario"));
+
+                        sesion.setAttribute("usuarioLogueado", personal);
+                    } else {
+                        personal = null;
+                    }
+                    ps.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("--> " + ex.getLocalizedMessage());
+            }
+        }
+        Conexion.cerrar();
+        return personal;
+    }
+
     public static boolean agregar(Personal personal) {
         boolean valor = false;
         if (Conexion.conectar()) {
-            String sql = " insert into personales(nombre, apellido, cedula, telefono, email, clave) "
+            String sql = " insert into personales(nombre, apellido, cedula, telefono, email, password_personal, login_personal) "
                     + "values('" + personal.getNombre() + "', '" + personal.getApellido() + "', '"
                     + personal.getCedula() + "', '" + personal.getTelefono() + "', '" + personal.getEmail() + "', '"
-                    + personal.getClave() + "' ) ";
+                    + personal.getPassword_personal() + "', '" + personal.getLogin_personal() + "', ) ";
             System.out.println("Mostrando el error \t" + sql);
             try {
                 Conexion.getSt().executeUpdate(sql);
@@ -40,7 +79,7 @@ public class PersonalController {
     public static boolean eliminar(Personal personal) {
         boolean valor = false;
         if (Conexion.conectar()) {
-            String sql = " delete from personales where id_personal = " + personal.getId_personal()+ " ";
+            String sql = " delete from personales where id_personal = " + personal.getId_personal() + " ";
             System.out.println("-->" + "\n" + sql);
             try {
                 Conexion.getSt().executeUpdate(sql);
@@ -55,11 +94,14 @@ public class PersonalController {
     public static boolean editar(Personal personal) {
         boolean valor = false;
         if (Conexion.conectar()) {
-            String sql = " update personales set nombre = '" + personal.getNombre() + "', apellido='"
-                    + personal.getApellido() + "', "
-                    + " cedula='" + personal.getClave()+ "', telefono='" + personal.getTelefono() + "', "
-                    + " email='" + personal.getEmail()+ "', clave='" + personal.getClave()+ "'  where id_personal='"
-                    + personal.getId_personal() + "' ";
+            String sql = " update personales "
+                    + "set nombre = '" + personal.getNombre() + "', "
+                    + "apellido='" + personal.getApellido() + "', "
+                    + "cedula='" + personal.getCedula() + "', "
+                    + "telefono='" + personal.getTelefono() + "', "
+                    + "email='" + personal.getEmail() + "', "
+                    + "password_personal='" + personal.getPassword_personal() + "', "
+                    + "login_personal='" + personal.getLogin_personal() + "' where id_personal='" + personal.getId_personal() + "' ";
             System.out.println("-->" + "\n" + sql);
             try {
                 Conexion.getSt().executeUpdate(sql);
@@ -84,7 +126,8 @@ public class PersonalController {
                     personal.setCedula(rs.getInt("cedula"));
                     personal.setTelefono(rs.getString("telefono"));
                     personal.setEmail(rs.getString("email"));
-                    personal.setClave(rs.getString("clave"));
+                    personal.setPassword_personal(rs.getString("password_personal"));
+                    personal.setLogin_personal(rs.getString("login_personal"));
                     // categoria.setId_categoria(rs.getInt("id_categoria"));
                     // categoria.setDescripcion(rs.getString("descripcion"));
                 } else {
@@ -94,7 +137,8 @@ public class PersonalController {
                     personal.setCedula(0);
                     personal.setTelefono("");
                     personal.setEmail("");
-                    personal.setClave("");
+                    personal.setPassword_personal("");
+                    personal.setLogin_personal("");
                     // categoria.setId_categoria(0);
                     // categoria.setDescripcion("");
                 }
@@ -125,7 +169,8 @@ public class PersonalController {
                                 + "<td>" + rs.getString("cedula") + "</td>"
                                 + "<td>" + rs.getString("telefono") + "</td>"
                                 + "<td>" + rs.getString("email") + "</td>"
-                                + "<td>" + rs.getString("clave") + "</td>"
+                                + "<td>" + rs.getString("password_personal") + "</td>"
+                                + "<td>" + rs.getString("login_personal") + "</td>"
                                 + "</tr>";
                     }
                     if (tabla.equals("")) {
