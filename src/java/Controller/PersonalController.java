@@ -33,15 +33,15 @@ public class PersonalController {
                         HttpSession sesion = request.getSession(true);
 
                         personal = new Personal();
-                        personal.setId_personal(rs.getInt("id_usuario"));
+                        personal.setId_personal(rs.getInt("id_personal"));
                         personal.setNombre(rs.getString("nombre"));
                         personal.setApellido(rs.getString("apellido"));
                         personal.setCedula(rs.getInt("cedula"));
                         personal.setTelefono(rs.getString("telefono"));
                         personal.setEmail(rs.getString("email"));
                         
-                        personal.setPassword_personal(rs.getString("nombre_usuario"));
-                        personal.setPassword_personal(rs.getString("password_usuario"));
+                        personal.setPassword_personal(rs.getString("nombre"));
+                        personal.setPassword_personal(rs.getString("password_personal"));
 
                         sesion.setAttribute("usuarioLogueado", personal);
                     } else {

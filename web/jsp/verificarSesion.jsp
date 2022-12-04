@@ -1,31 +1,30 @@
-
+<%@page import="Model.Personal"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@page import="Modelos.Usuarios"%>
+<%--<%@page import="Modelo.Usuarios"%>--%>
 <%@page import="java.sql.ResultSet"%>
 
 <%
     HttpSession sesion = request.getSession();
-    int id_usuario = 0;
-    String login_usuario = "";
-    String nombre_usuario = "";
+    int id_personal = 0;
+    String login_personal = "";
+    String nombre = "";
     String activo = "false";
     String mensaje = "La sesion esta cerrada.";
-    Usuarios usuarioLogueado = (Usuarios) sesion.getAttribute("usuarioLogueado");
+    Personal usuarioLogueado = (Personal) sesion.getAttribute("usuarioLogueado");
     if (usuarioLogueado != null) {
-        id_usuario = usuarioLogueado.getId_usuario();
-        login_usuario = usuarioLogueado.getLogin_usuario();
-        nombre_usuario = usuarioLogueado.getNombre_usuario();
+        id_personal = usuarioLogueado.getId_personal();
+        login_personal= usuarioLogueado.getLogin_personal();
+        nombre = usuarioLogueado.getNombre();
         activo = "true";
-        mensaje = "La sesion esta abierta.";
+        mensaje = "Sesion abierta.";
     }
     
     JSONObject obj = new JSONObject();
     obj.put("mensaje", mensaje);
     obj.put("activo", activo);
-    obj.put("id_usuario", id_usuario);
-    obj.put("login_usuario", login_usuario);
-    obj.put("nombre_usuario", nombre_usuario);
-
+    obj.put("id_personal", id_personal);
+    obj.put("login_personal", login_personal);
+    obj.put("nombre", nombre);
     out.print(obj);
     out.flush();
 %>

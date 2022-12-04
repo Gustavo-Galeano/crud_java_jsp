@@ -9,6 +9,7 @@ function siguienteCampo(actual, siguiente, preventDefault) {
         }
     });
 }
+
 function enterCampo(actual, ejecutar) {
     $(actual).keydown(function (event) {
         if (event.which === 13) {
@@ -16,12 +17,13 @@ function enterCampo(actual, ejecutar) {
         }
     });
 }
+
 function validarAcceso() {
     $("mensajes").html("Mensajes del Sistema");
     if ($("usuario_usuario").val() === "") {
         $("mensajes").html("Usuario no debe estar vacio.");
         setTimeout(' location.reload()', 1500);
-    } else if ($("password_usuario").val() === "") {
+    } else if ($("password_personal").val() === "") {
         $("mensajes").html("Clave no debe estar vacio.");
         setTimeout(' location.reload()', 1500);
     } else {

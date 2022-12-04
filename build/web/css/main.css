@@ -9,3 +9,13 @@
 .style {
     width: 70%; 
 }
+
+.img-logo{
+    width: 70px;
+    height: 80px;
+}
+
+.letra-estilo{
+    font-size: 21px;
+    font-weight: 300;
+}

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
+    <title>Bambu S.A</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <link href="../../../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../../../css/bootstrap/bootstrap.min.css">
+
 </head>
 
 <body>
     <div id="confirmar"></div>
+
     <div id="buscar"></div>
+
     <div id="panelLinea" class="panel panel-primary">
-        <div class="panel-heading centrado">Factura | Detalle</div>
+        <div class="panel-heading centrado">Pedidos | Detalle</div>
         <div class="panel-body">
             <form id="formLinea">
                 <div class="row">
@@ -65,36 +68,45 @@
             <button id="botonSalirLinea" type="button" class="btn btn-primary btn-sm">Salir</button>
         </div>
     </div>
+
     <div id="panelPrograma" class="panel panel-primary">
-        <div class="panel-heading centrado">Pedidos | <span id="snombre_empresa"></span> | <span
-                id="susuario_usuario"></span></div>
+        <div class="panel-heading centrado">
+            Facturacion
+            <span id="snombre_empresa"></span> | <span id="susuario_usuario"></span>
+        </div>
+
         <div class="panel-body">
             <form id="formPrograma">
-                <div class="row">
+
+                <div class="row mt-2">
                     <div class="col-md-1">
                         <span>Id</span>
                     </div>
                     <div class="col-md-1">
-                        <input id="id_pedido" name="id_pedido" type="text" class="form-control input-sm"
+                        <input id="id_factura" name="id_factura" type="text" class="form-control input-sm"
                             placeholder="Id">
                     </div>
                     <div class="col-md-1">
-                        <button id="botonBuscarIdPedido" type="button" class="btn btn-primary btn-sm"><span
-                                class="glyphicon glyphicon-search"></span></button>
+                        <button id="botonBuscarIdFactura" type="button" class="btn btn-primary btn-sm">
+                            <i class='bx bx-search-alt-2'></i>
+                        </button>
                     </div>
 
                 </div>
-                <div class="row">
+
+                <div class="row mt-2">
                     <div class="col-md-1">
                         <span>Cliente</span>
                     </div>
+
                     <div class="col-md-1">
                         <input id="id_cliente" name="id_cliente" type="text" class="form-control input-sm"
                             placeholder="Id">
                     </div>
                     <div class="col-md-1">
-                        <button id="botonBuscarIdCliente" type="button" class="btn btn-primary btn-sm"><span
-                                class="glyphicon glyphicon-search"></span></button>
+                        <button id="botonBuscarIdCliente" type="button" class="btn btn-primary btn-sm">
+                            <i class='bx bx-search-alt-2'></i>
+                        </button>
                     </div>
 
                     <div class="col-md-3">
@@ -102,40 +114,49 @@
                             placeholder="Nombre Cliente" disabled="disabled">
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <span>Fecha</span>
+
+                <div class="row mt-2">
+                    <div class="col-md-3"> <span>Fecha</span>
                     </div>
                     <div class="col-md-3">
-                        <input id="fecha_pedido" name="fecha_pedido" type="date" class="form-control input-sm">
+                        <input id="fecha_factura" name="fecha_factura" type="date" class="form-control input-sm">
                     </div>
+
+
                 </div>
 
             </form>
+
             <div id="detalle" hidden="">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
+
                             <th>Id</th>
-                            <th>Articulo</th>
+                            <th>Producto</th>
                             <th>Nombre</th>
                             <th class="centrado">Cantidad</th>
-                            <th class="centrado"><button onclick="agregarLinea()" type="button"
-                                    class="btn btn-primary btn-sm"><span
-                                        class="glyphicon glyphicon-plus"></span></button></th>
+                            <th class="centrado"><button onclick="agregarLinea()" type="button" class="btn btn-primary">
+                                    <span class="glyphicon glyphicon-plus">
+                                    </span>
+                                </button>
+                            </th>
+
                         </tr>
                     </thead>
+
                     <tbody id="contenidoDetalle">
                     </tbody>
+
                 </table>
             </div>
         </div>
         <div class="panel-footer centrado">
-            <button id="botonAgregar" type="button" class="btn btn-primary btn-sm">Agregar</button>
-            <button id="botonModificar" type="button" class="btn btn-primary btn-sm">Modificar</button>
-            <button id="botonEliminar" type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+            <button id="botonAgregar" type="button" class="btn btn-primary ">Agregar</button>
+            <button id="botonModificar" type="button" class="btn btn-primary ">Modificar</button>
+            <button id="botonEliminar" type="button" class="btn btn-primary " data-toggle="modal"
                 data-target="#confirmarEliminar">Eliminar</button>
-            <button id="botonSalir" type="button" class="btn btn-primary btn-sm">Salir</button>
+            <button id="botonSalir" type="button" class="btn btn-primary ">Salir</button>
         </div>
     </div>
     <div id="mensajes" class="well well-sm centrado">Mensajes del Sistema.</div>
@@ -178,9 +199,9 @@
         </div>
     </div>
     <script src="../../../js/jquery.min.js" type="text/javascript"></script>
-    <script src="../../../js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="../../../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
     <script src="../../../js/funciones.js" type="text/javascript"></script>
-    <script src="js/funciones.js" type="text/javascript"></script>
+    <script src="js/funciones.js"></script>
     <script>
         //verificarSesion(true);
         $("#buscar").css("display", "none");
