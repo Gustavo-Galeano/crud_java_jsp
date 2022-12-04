@@ -1,0 +1,11 @@
+.estilo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 69%; */
+    margin-top: 5%;
+}
+
+.style {
+    width: 70%; 
+}
