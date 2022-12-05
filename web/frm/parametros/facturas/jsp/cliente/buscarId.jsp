@@ -28,8 +28,6 @@
     obj.put("id_cliente", cliente.getId_cliente());
     obj.put("nombre_cliente", cliente.getNombre());
     obj.put("apellido_cliente", cliente.getApellido());
-    obj.put("ruc_cliente", cliente.getRuc());
-    obj.put("telefono_cliente", cliente.getTelefono());
     
     out.print(obj);
     out.flush();
