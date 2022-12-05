@@ -10,10 +10,10 @@ function buscarIdPedido() {
         },
         success: function (json) {
             $("#mensajes").html(json.mensaje);
-            $("#id_pedido").val(json.id_pedido);
+            $("#id_facturacion").val(json.id_facturacion);
             $("#id_cliente").val(json.id_cliente);
-            $("#nombre_cliente").val(json.nombre_cliente);
-            $("#fecha_pedido").val(json.fecha_pedido);
+            $("#nombre").val(json.nombre);
+            $("#fecha_factura").val(json.fecha_factura);
             $("#contenidoDetalle").html(json.contenido_detalle);
             if (json.nuevo === "true") {
                 $("#botonAgregar").prop('disabled', false);
@@ -39,7 +39,7 @@ function buscarIdPedido() {
         }
     });
 }
-function buscarNombrePedido() {
+function buscarNombreFactura() {
     var datosFormulario = $("#formBuscar").serialize();
     $.ajax({
         type: 'POST',
@@ -57,8 +57,8 @@ function buscarNombrePedido() {
             $("tbody tr").on("click", function () {
                 var id = $(this).find("td:first").html();
                 $("#panelBuscar").html("");
-                $("#id_pedido").val(id);
-                $("#nombre_cliente").focus();
+                $("#id_facturacion").val(id);
+                $("#bnombre").focus();
                 buscarIdPedido();
                 $("#buscar").fadeOut("slow");
                 $("#panelPrograma").fadeIn("slow");
@@ -264,12 +264,12 @@ function limpiarFormulario() {
 function agregarLinea() {
     $("#id_detallepedido").val("0");
     $("#id_producto").val("0");
-    $("#nombre_articulo").val("");
+    $("#nombre_producto").val("");
     $("#cantidad_articulopedido").val("0");
     $("#panelLinea").fadeIn("slow");
     $("#panelPrograma").fadeOut("slow");
-    $("#id_pro#id_producto").focus();
-    $("#id_pro#id_producto").select();
+    $("#id_producto").focus();
+    $("#id_producto").select();
     $("#botonAgregarLinea").prop('disabled', false);
     $("#botonModificarLinea").prop('disabled', true);
     $("#botonEliminarLinea").prop('disabled', true);
@@ -277,13 +277,13 @@ function agregarLinea() {
 }
 function editarLinea(id) {
     $("#id_detallepedido").val(id);
-    $("#id_pro#id_producto").val("0");
+    $("#id_producto").val("0");
     $("#nombre_articulo").val("");
     $("#cantidad_articulopedido").val("0");
     $("#panelLinea").fadeIn("slow");
     $("#panelPrograma").fadeOut("slow");
-    $("#id_pro#id_producto").focus();
-    $("#id_pro#id_producto").select();
+    $("#id_producto").focus();
+    $("#id_producto").select();
     $("#botonAgregarLinea").prop('disabled', true);
     $("#botonModificarLinea").prop('disabled', false);
     $("#botonEliminarLinea").prop('disabled', false);

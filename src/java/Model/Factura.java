@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.sql.Date;
+
 /**
  *
  * @author PC
@@ -12,25 +14,12 @@ package Model;
 public class Factura {
 
     private int id_facturacion;
-    private String fecha;
-    private String estado;
-    private String numero;
-    private String condicion;
+    private Date fecha;
     
     private Cliente cliente;
     private Personal personal;
 
     public Factura() {
-    }
-
-    public Factura(int id_facturacion, String fecha, String estado, String numero, String condicion, Cliente cliente, Personal personal) {
-        this.id_facturacion = id_facturacion;
-        this.fecha = fecha;
-        this.estado = estado;
-        this.numero = numero;
-        this.condicion = condicion;
-        this.cliente = cliente;
-        this.personal = personal;
     }
 
     public int getId_facturacion() {
@@ -41,36 +30,12 @@ public class Factura {
         this.id_facturacion = id_facturacion;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public String getCondicion() {
-        return condicion;
-    }
-
-    public void setCondicion(String condicion) {
-        this.condicion = condicion;
     }
 
     public Cliente getCliente() {
@@ -88,6 +53,13 @@ public class Factura {
     public void setPersonal(Personal personal) {
         this.personal = personal;
     }
-    
+
+    public Factura(int id_facturacion, Date fecha, Cliente cliente, Personal personal) {
+        this.id_facturacion = id_facturacion;
+        this.fecha = fecha;
+        this.cliente = cliente;
+        this.personal = personal;
+    }
+
     
 }

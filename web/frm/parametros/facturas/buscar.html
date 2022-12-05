@@ -1,4 +1,3 @@
-
 <div id="panelBuscar" class="panel panel-primary">
     <div class="panel-heading centrado">Buscar Pedidos</div>
     <div class="panel-body">
@@ -9,7 +8,7 @@
                     <span>Nombre</span>
                 </div>
                 <div class="col-md-9">
-                    <input id="bnombre_pedido" name="bnombre_pedido" type="text" class="form-control input-sm" placeholder="Nombre">
+                    <input id="bnombre" name="bnombre" type="text" class="form-control input-sm" placeholder="Nombre">
                 </div>
                 <div class="col-md-2">
                     <button id="botonBuscar" type="button" class="btn btn-primary btn-sm">Buscar</button>
@@ -29,12 +28,24 @@
                 <tbody id="contenidoBusqueda">
                 </tbody>
             </table>
-            <nav>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" id="anterior">
+                        <a class="page-link" href="#">Anterior</a>
+                    </li>
+                    <li class="page-item" id="siguiente">
+                        <a class="page-link" href="#">Siguiente</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- <nav>
                 <ul class="pager">
                     <li id="anterior"><a href="#"><span aria-hidden="true">&larr;</span> Anterior</a></li>
                     <li id="siguiente"><a href="#">Siguiente <span aria-hidden="true">&rarr;</span></a></li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
     </div>
     <div class="panel-footer centrado">
@@ -42,28 +53,28 @@
     </div>
 </div>
 <script>
-    buscarNombrePedido();
-    $("#bnombre_pedido").focus();
-    siguienteCampo("#bnombre_pedido", "#botonBuscar", false);
-    $("#botonBuscar").on("click", function() {
+    buscarNombreFactura();
+    $("#bnombre").focus();
+    siguienteCampo("#bnombre", "#botonBuscar", false);
+    $("#botonBuscar").on("click", function () {
         $("#contenidoBusqueda").html("");
-        $("#bpagina").val("1"); 
-        buscarNombrePedido();
-        $("#bnombre_pedido").focus();
+        $("#bpagina").val("1");
+        buscarNombreFactura();
+        $("#bnombre").focus();
     });
-    $("#anterior").on("click", function() {
+    $("#anterior").on("click", function () {
         $("#contenidoBusqueda").html("");
         var pag = parseInt($("#bpagina").val());
         if (pag > 1) {
             $("#bpagina").val(pag - 1);
         }
-        buscarNombrePedido();
+        buscarNombreFactura();
     });
-    $("#siguiente").on("click", function() {
+    $("#siguiente").on("click", function () {
         $("#contenidoBusqueda").html("");
         var pag = parseInt($("#bpagina").val());
         $("#bpagina").val(pag + 1);
-        buscarNombrePedido();
+        buscarNombreFactura();
     });
 
     $("#botonSalirBuscar").on('click', function () {
@@ -71,4 +82,3 @@
         $("#panelPrograma").fadeIn("slow");
     }); 
 </script>
-

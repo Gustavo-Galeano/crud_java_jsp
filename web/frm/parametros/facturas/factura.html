@@ -25,7 +25,7 @@
                         <span>Id Linea</span>
                     </div>
                     <div class="col-md-1">
-                        <input id="id_detallepedido" name="id_detallepedido" type="text" class="form-control input-sm"
+                        <input id="id_detallefactura" name="id_detallefactura" type="text" class="form-control input-sm"
                             placeholder="Id" readonly="readonly">
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <span>Id</span>
                     </div>
                     <div class="col-md-1">
-                        <input id="id_factura" name="id_factura" type="text" class="form-control input-sm"
+                        <input id="id_facturacion" name="id_facturacion" type="text" class="form-control input-sm"
                             placeholder="Id">
                     </div>
                     <div class="col-md-1">
@@ -246,7 +246,7 @@
         });
 
 
-        $("#botonBuscarIdPedido").on('click', function () {
+        $("#botonBuscarIdFactura").on('click', function () {
             $("#buscar").load("buscar.html");
             $("#buscar").fadeIn("slow");
             $("#panelPrograma").fadeOut("slow");

@@ -7,6 +7,10 @@ package Util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -41,5 +45,19 @@ public class Utiles {
             ex.printStackTrace();
         }
         return palabraMD5;
+    }
+
+    public static java.sql.Date stringToSqlDate(String fecha) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = null;
+
+        try {
+            utilDate = sdf.parse(fecha);
+            sqlDate = new java.sql.Date(utilDate.getTime());
+        } catch (ParseException ex) {
+            Logger.getLogger(Utiles.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return sqlDate;
     }
 }

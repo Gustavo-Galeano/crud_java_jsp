@@ -35,7 +35,9 @@
 
 
                         <div class="col-md-1">
-                            <button id="botonBuscarIdArticulo" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                            <button id="botonBuscarIdArticulo" type="button" class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
                         </div>
                         <div class="col-md-9">
                             <input id="nombre_articulo" name="nombre_articulo" type="text" class="form-control input-sm" placeholder="Nombre Articulo" readonly="readonly">
@@ -82,7 +84,9 @@
                             <input id="id_cliente" name="id_cliente" type="text" class="form-control input-sm" placeholder="Id">
                         </div>
                         <div class="col-md-1">
-                            <button id="botonBuscarIdCliente" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-search"></span></button>
+                            <button id="botonBuscarIdCliente" type="button" class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
                         </div>
 
                         <div class="col-md-3">
@@ -93,19 +97,19 @@
                         <div class="col-md-3">                            <span>Fecha</span>
                         </div>
                         <div class="col-md-3">
-                            <input id="fecha_pedido" name="fecha_pedido" type="date" class="form-control input-sm" >
+                            <input id="fecha_factura" name="fecha_factura" type="date" class="form-control input-sm" >
                         </div>
-                        
+
 
                     </div>
-                   
+
                 </form>
-                <div id="detalle" hidden="">
+                <div id="detalle" >
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Articulo</th>
+                                <th>Producto</th>
                                 <th>Nombre</th>
                                 <th class="centrado">Cantidad</th>
                                 <th class="centrado"><button onclick="agregarLinea()" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span></button></th>
