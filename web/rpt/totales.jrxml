@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="totales" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="9a369c25-2079-4344-af72-0c064d7fc5fd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="factura" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     detalle_venta."detvta_iddetalleventa" AS detalle_venta_detvta_iddetalleventa,
+     detalle_venta."ven_idventa" AS detalle_venta_ven_idventa,
+     detalle_venta."pro_idproducto" AS detalle_venta_pro_idproducto,
+     detalle_venta."detvta_cantidad" AS detalle_venta_detvta_cantidad,
+     productos."pro_idproducto" AS productos_pro_idproducto,
+     productos."iva_idiva" AS productos_iva_idiva,
+     productos."cat_idcat" AS productos_cat_idcat,
+     productos."pro_nombre" AS productos_pro_nombre,
+     productos."pro_preciocompra" AS productos_pro_preciocompra,
+     productos."pro_precioventa" AS productos_pro_precioventa,
+     ventas."ven_idventa" AS ventas_ven_idventa,
+     ventas."cli_id" AS ventas_cli_id,
+     ventas."ven_fecha" AS ventas_ven_fecha,
+f_convnl(sum(productos.pro_precioventa * detalle_venta.detvta_cantidad) OVER (PARTITION BY detalle_venta."ven_idventa"))as letras
+
+FROM
+     "public"."productos" productos INNER JOIN "public"."detalle_venta" detalle_venta ON productos."pro_idproducto" = detalle_venta."pro_idproducto"
+     INNER JOIN "public"."ventas" ventas ON detalle_venta."ven_idventa" = ventas."ven_idventa" where detalle_venta.ven_idventa=$P{factura}
+limit 1]]>
+	</queryString>
+	<field name="detalle_venta_detvta_iddetalleventa" class="java.lang.Integer"/>
+	<field name="detalle_venta_ven_idventa" class="java.lang.Integer"/>
+	<field name="detalle_venta_pro_idproducto" class="java.lang.Integer"/>
+	<field name="detalle_venta_detvta_cantidad" class="java.lang.Integer"/>
+	<field name="productos_pro_idproducto" class="java.lang.Integer"/>
+	<field name="productos_iva_idiva" class="java.lang.Integer"/>
+	<field name="productos_cat_idcat" class="java.lang.Integer"/>
+	<field name="productos_pro_nombre" class="java.lang.String"/>
+	<field name="productos_pro_preciocompra" class="java.lang.Integer"/>
+	<field name="productos_pro_precioventa" class="java.lang.Integer"/>
+	<field name="ventas_ven_idventa" class="java.lang.Integer"/>
+	<field name="ventas_cli_id" class="java.lang.Integer"/>
+	<field name="ventas_ven_fecha" class="java.sql.Date"/>
+	<field name="letras" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="59e5513d-a454-48bd-89fc-2015585737c3"/>
+				<textFieldExpression><![CDATA[$F{letras}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

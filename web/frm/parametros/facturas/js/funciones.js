@@ -317,7 +317,7 @@ function agregarPedidoFactura() {
         }
     });
 }
-function buscarIdPedidoPedidoDetalle() {
+function buscarIdFacturaFacturaDetalle() {
     var datosFormulario = $("#formPrograma").serialize();
     $.ajax({
         type: 'POST',
@@ -340,7 +340,7 @@ function buscarIdPedidoPedidoDetalle() {
         }
     });
 }
-function agregarPedidoDetalle() {
+function agregarPedidoFactura() {
     var datosFormulario = $("#formLinea").serialize();
     var id_pedido = $("#id_pedido").val();
     datosFormulario += "&id_pedido=" + id_pedido;
@@ -438,13 +438,13 @@ function buscarIdProducto() {
             $("#mensajes").html(json.mensaje);
             $("#id_producto").val(json.id_producto);
             $("#nombre_producto").val(json.nombre_producto);
-            $("#precio_producto").val(json.precio_producto);
+            // $("#precio_producto").val(json.precio_producto);
 
-            $("#id_categoria").val(json.id_categoria);
-            $("#descripcion_categoria").val(json.descripcion_categoria);
+            // $("#id_categoria").val(json.id_categoria);
+            // $("#descripcion_categoria").val(json.descripcion_categoria);
 
-            $("#id_iva").val(json.id_iva);
-            $("#valor_iva").val(json.valor_iva);
+            // $("#id_iva").val(json.id_iva);
+            // $("#valor_iva").val(json.valor_iva);
 
         },
         error: function (e) {

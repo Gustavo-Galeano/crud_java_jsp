@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="facExenta" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d45a3792-18ac-4fa7-8617-cac3afd40b62">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="factura" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     productos."pro_idproducto" AS productos_pro_idproducto,
+     productos."iva_idiva" AS productos_iva_idiva,
+     productos."cat_idcat" AS productos_cat_idcat,
+     productos."pro_nombre" AS productos_pro_nombre,
+     productos."pro_preciocompra" AS productos_pro_preciocompra,
+     productos."pro_precioventa" AS productos_pro_precioventa,
+     detalle_venta."detvta_iddetalleventa" AS detalle_venta_detvta_iddetalleventa,
+     detalle_venta."ven_idventa" AS detalle_venta_ven_idventa,
+     detalle_venta."pro_idproducto" AS detalle_venta_pro_idproducto,
+     detalle_venta."detvta_cantidad" AS detalle_venta_detvta_cantidad,
+     iva."iva_valor" AS valoriva,
+     case
+when
+iva."iva_valor"=0 then
+productos.pro_precioventa * detalle_venta.detvta_cantidad
+else 0
+     end as subExenta,
+          case when iva."iva_valor"=5 then productos.pro_precioventa * detalle_venta.detvta_cantidad
+else 0
+     end as subcinco,
+          case when iva."iva_valor"=10 then  productos.pro_precioventa * detalle_venta.detvta_cantidad
+else 0
+     end as subdiez
+
+
+FROM
+     "productos" productos,  "detalle_venta" detalle_venta, "iva" iva
+     where productos.iva_idiva = iva.iva_idiva and
+     productos."pro_idproducto" = detalle_venta."pro_idproducto" and detalle_venta.ven_idventa=$P{factura}]]>
+	</queryString>
+	<field name="productos_pro_idproducto" class="java.lang.Integer"/>
+	<field name="productos_iva_idiva" class="java.lang.Integer"/>
+	<field name="productos_cat_idcat" class="java.lang.Integer"/>
+	<field name="productos_pro_nombre" class="java.lang.String"/>
+	<field name="productos_pro_preciocompra" class="java.lang.Integer"/>
+	<field name="productos_pro_precioventa" class="java.lang.Integer"/>
+	<field name="detalle_venta_detvta_iddetalleventa" class="java.lang.Integer"/>
+	<field name="detalle_venta_ven_idventa" class="java.lang.Integer"/>
+	<field name="detalle_venta_pro_idproducto" class="java.lang.Integer"/>
+	<field name="detalle_venta_detvta_cantidad" class="java.lang.Integer"/>
+	<field name="valoriva" class="java.lang.Integer"/>
+	<field name="subexenta" class="java.lang.Integer"/>
+	<field name="subcinco" class="java.lang.Integer"/>
+	<field name="subdiez" class="java.lang.Integer"/>
+	<variable name="subdiez_1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{subdiez}]]></variableExpression>
+	</variable>
+	<variable name="subcinco_1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{subcinco}]]></variableExpression>
+	</variable>
+	<variable name="subexenta_1" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$F{subexenta}]]></variableExpression>
+	</variable>
+	<variable name="valoriva_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{valoriva}]]></variableExpression>
+	</variable>
+	<summary>
+		<band height="67" splitType="Stretch">
+			<textField pattern="#,##0">
+				<reportElement x="490" y="1" width="68" height="20" uuid="9e8e1d74-4ef7-4b39-9e21-493986f2d129"/>
+				<textFieldExpression><![CDATA[$V{subdiez_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="419" y="0" width="70" height="20" uuid="23e304bc-05b2-421d-9dbc-04ea00f6ebba"/>
+				<textFieldExpression><![CDATA[$V{subcinco_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="352" y="1" width="66" height="20" uuid="6dcd0b7a-25f8-4e80-bbc7-a7f5b0846848"/>
+				<textFieldExpression><![CDATA[$V{subexenta_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="459" y="24" width="95" height="20" uuid="7d96fe12-3200-46d0-ba73-e49d9c9c9791"/>
+				<textFieldExpression><![CDATA[$V{subdiez_1}+$V{subcinco_1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="67" y="44" width="95" height="20" uuid="6926a577-3052-414c-9a41-108e91a89076"/>
+				<textFieldExpression><![CDATA[$V{subcinco_1}/21]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="181" y="44" width="89" height="20" uuid="32d70b29-a3f1-46a0-8e78-0045a145001c"/>
+				<textFieldExpression><![CDATA[$V{subdiez_1}/11]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="304" y="44" width="100" height="20" uuid="c423b939-9be0-40bb-86c6-d5a8116c04c2"/>
+				<textFieldExpression><![CDATA[($V{subcinco_1}/21)+($V{subdiez_1}/11)]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

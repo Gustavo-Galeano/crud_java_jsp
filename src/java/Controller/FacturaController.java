@@ -27,10 +27,10 @@ public class FacturaController {
                 ResultSet rs = Conexion.getSt().executeQuery(sql);
                 Cliente cliente = new Cliente();
                 if (rs.next()) {
-                    factura.setId_facturacion(rs.getInt("id_facturacion"));
+                    factura.setId_facturacion(rs.getInt("id_venta"));
                     //  iva.setIva_idiva(rs.getInt("iva_idiva"));
                     cliente.setId_cliente(rs.getInt("id_cliente"));
-                    factura.setFecha(rs.getDate("fecha_factura"));
+                    factura.setFecha(rs.getDate("fecha"));
                     cliente.setNombre(rs.getString("nombre"));
                     factura.setCliente(cliente);
                 }
@@ -63,6 +63,7 @@ public class FacturaController {
                                 + "<td>" + rs.getString("id_venta") + "</td>"
                                 + "<td>" + rs.getString("id_cliente") + "</td>"
                                 + "<td>" + rs.getString("nombre") + "</td>"
+//                                + "<td>" + rs.getString("fecha") + "</td>"
                                 + "</tr>";
                     }
                     if (tabla.equals("")) {

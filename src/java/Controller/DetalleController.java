@@ -36,7 +36,7 @@ public class DetalleController {
                     ResultSet rs = ps.executeQuery();
                     if (rs.next()) {
                         detalle_venta = new Detalle();
-                        detalle_venta.setId_detalleVenta(rs.getInt("detvta_iddetalleventa"));
+                        detalle_venta.setId_detalleVenta(rs.getInt("id_detventa"));
                         detalle_venta.setCantidad(rs.getInt("detvta_cantidad"));
 
                         Producto producto = new Producto();
@@ -63,11 +63,18 @@ public class DetalleController {
         String valor = "";
         if (Conexion.conectar()) {
             try {
-                String sql = "select * from detalleVentas dv "
-                        + "left join ventas v on v.id_venta=dv.id_venta "
+//                String sql = "select * from detalleVentas dv "
+//                        + "left join ventas v on v.id_venta=dv.id_venta "
+//                        + "left join productos p on p.id_producto=dv.id_producto "
+//                        + "where dv.id_venta=" + id + " "
+//                        + "order by id_detventa";
+
+                String sql = "select * from detalleventas dv "
+                        + "inner join ventas v on v.id_venta=dv.id_venta "
                         + "left join productos p on p.id_producto=dv.id_producto "
                         + "where dv.id_venta=" + id + " "
                         + "order by id_detventa";
+
                 System.out.println("detalle--> " + sql);
                 try (PreparedStatement ps = Conexion.getConn().prepareStatement(sql)) {
                     ResultSet rs = ps.executeQuery();
@@ -81,7 +88,7 @@ public class DetalleController {
                         tabla += "<tr>"
                                 + "<td>" + rs.getString("id_detventa") + "</td>"
                                 + "<td>" + rs.getString("id_producto") + "</td>"
-                                + "<td>" + rs.getString("nombre") + "</td>"
+                                + "<td>" + rs.getString("nombre_producto") + "</td>"
                                 + "<td class='centrado'>" + df.format(cantidad) + "</td>"
                                 + "<td class='centrado'>"
                                 + "<button onclick='editarLinea(" + rs.getString("id_detventa") + ")'"
@@ -103,5 +110,6 @@ public class DetalleController {
         }
         Conexion.cerrar();
         return valor;
-    };
+    }
+;
 }
