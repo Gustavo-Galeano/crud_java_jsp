@@ -207,25 +207,25 @@
         //verificarSesion(true);
         $("#buscar").css("display", "none");
         $("#panelLinea").css("display", "none");
-        $("#id_pedido").focus();
-        siguienteCampo("#id_pedido", "#id_cliente", false);
+        $("#id_facturacion").focus();
+        siguienteCampo("#id_facturacion", "#id_cliente", false);
 
-        siguienteCampo("#id_articulo", "#cantidad_articulopedido", false);
+        siguienteCampo("#id_producto", "#cantidad_articulopedido", false);
 
-        if ($("#id_pedido").val() === "0") {
+        if ($("#idfacturacion").val() === "0") {
             siguienteCampo("#id_cliente", "#botonAgregar", false);
         } else {
 
             siguienteCampo("#id_cliente", "#botonModificar", false);
         }
 
-        $("#id_pedido").focusout(function (event) {
-            if ($("#id_pedido").val() === "") {
-                $("#id_pedido").val("0");
+        $("#id_facturacion").focusout(function (event) {
+            if ($("#id_facturacion").val() === "") {
+                $("#id_facturacion").val("0");
             }
-            buscarIdPedido();
-            var id = $("#id_pedido").val();
-            $("#id_pedido").val("0");
+            buscarIdFactura();
+            var id = $("#id_facturacion").val();
+            $("#id_facturacion").val("0");
             var img = "<img src='../../../img/pedidos/" + id + ".jpg' alt=''>";
             $("#foto").html(img);
 
@@ -268,7 +268,7 @@
 
         $("#botonAgregar").on('click', function () {
 
-            agregarPedido();
+            agregarFactura();
 
         });
         $("#botonModificar").on('click', function () {
@@ -286,12 +286,12 @@
 
         $("#botonAgregarLinea").on('click', function () {
 
-            agregarPedidoDetalle();
+            agregarPedidoFactura();
 
         });
         $("#botonModificarLinea").on('click', function () {
 
-            modificarPedidoDetalle();
+            agregarPedidoFactura();
 
 
         });

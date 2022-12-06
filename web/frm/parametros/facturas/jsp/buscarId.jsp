@@ -1,5 +1,5 @@
 
-
+<%@page import="Controller.DetalleController"%>
 <%@page import="Model.Cliente"%>
 <%@page import="Controller.FacturaController"%>
 <%@page import="Model.Factura"%>
@@ -35,7 +35,7 @@
         factura.setCliente(cliente);
     }
 
-    String contenido_detalle = Detalle_ventaControlador.buscarId(id_facturacion);
+    String contenido_detalle = DetalleController.buscarIdFactura(id_facturacion);
     JSONObject obj = new JSONObject();
     obj.put("tipo", tipo);
     obj.put("mensaje", mensaje);
@@ -44,9 +44,9 @@
     obj.put("id_facturacion", String.valueOf(factura.getId_facturacion()));
     obj.put("id_cliente", String.valueOf(factura.getCliente().getId_cliente()));
 
-    obj.put("cli_nombre", factura.getCliente().getNombre());
+    obj.put("nombre_cliente", factura.getCliente().getNombre());
   
-    obj.put("ven_fecha", factura.getFecha().toString());
+    obj.put("fecha_venta", factura.getFecha().toString());
     //obj.put("fecha_pedido", String.valueOf(compras.getCom_fechacompra()));
 
     obj.put("contenido_detalle", contenido_detalle);
@@ -54,7 +54,5 @@
 
     out.print(obj);
     out.flush();
-
-
 %>
 

@@ -31,7 +31,7 @@ public class FacturaController {
                     //  iva.setIva_idiva(rs.getInt("iva_idiva"));
                     cliente.setId_cliente(rs.getInt("id_cliente"));
                     factura.setFecha(rs.getDate("fecha_factura"));
-                    cliente.setNombre(rs.getString("nombre_cliente"));
+                    cliente.setNombre(rs.getString("nombre"));
                     factura.setCliente(cliente);
                 }
 
@@ -48,7 +48,8 @@ public class FacturaController {
         String valor = "";
         if (Conexion.conectar()) {
             try {
-                String sql = "select * from ventas v left join clientes c on v.id_cliente=v.id_cliente where upper(nombre) like '%"
+                String sql = "select * from ventas v left join clientes c on v.id_cliente=v.id_cliente "
+                        + "where upper(nombre) like '%"
                         + nombre.toUpperCase()
                         + "%' "
                         + "order by id_venta "

@@ -1,4 +1,4 @@
-function buscarIdPedido() {
+function buscarIdFactura() {
     var datosFormulario = $("#formPrograma").serialize();
     $.ajax({
         type: 'POST',
@@ -12,7 +12,7 @@ function buscarIdPedido() {
             $("#mensajes").html(json.mensaje);
             $("#id_facturacion").val(json.id_facturacion);
             $("#id_cliente").val(json.id_cliente);
-            $("#nombre").val(json.nombre);
+            $("#nombre_cliente").val(json.nombre_cliente);
             $("#fecha_factura").val(json.fecha_factura);
             $("#contenidoDetalle").html(json.contenido_detalle);
             if (json.nuevo === "true") {
@@ -59,7 +59,7 @@ function buscarNombreFactura() {
                 $("#panelBuscar").html("");
                 $("#id_facturacion").val(id);
                 $("#bnombre").focus();
-                buscarIdPedido();
+                buscarIdFactura();
                 $("#buscar").fadeOut("slow");
                 $("#panelPrograma").fadeIn("slow");
             });
@@ -73,7 +73,7 @@ function buscarNombreFactura() {
         }
     });
 }
-function agregarPedido() {
+function agregarFactura() {
     var datosFormulario = $("#formPrograma").serialize();
     $.ajax({
         type: 'POST',
@@ -89,8 +89,8 @@ function agregarPedido() {
             $("#mensajes").html(json.mensaje);
             $("#botonAgregar").prop('disabled', true);
             $("#detalle").prop('hidden', false);
-            $("#id_pedido").val(json.id_pedido);
-            buscarIdPedido();
+            $("#id_facturacion").val(json.id_facturacion);
+            buscarIdFactura();
             // $("#id_pedido").focus;
             //$("#id_pedido").select();
 
@@ -291,7 +291,7 @@ function editarLinea(id) {
     siguienteCampo("#cantidad_articulopedido", "#botonModificarLinea", true);
 }
 // pedidosarticulos
-function buscarIdPedidoDetalle() {
+function agregarPedidoFactura() {
     var datosFormulario = $("#formLinea").serialize();
     alert(datosFormulario);
     $.ajax({

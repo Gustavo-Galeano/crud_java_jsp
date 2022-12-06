@@ -8,8 +8,7 @@ package Controller;
 import Model.Personal;
 import Util.Conexion;
 import Util.Utiles;
-//import jakarta.servlet.http.HttpServletRequest;
-//import jakarta.servlet.http.HttpSession;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
