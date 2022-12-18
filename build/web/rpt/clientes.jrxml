@@ -27,7 +27,7 @@
 				<textElement textAlignment="Center">
 					<font size="20" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Clientes]]></text>
+				<text><![CDATA[CLIENTES]]></text>
 			</staticText>
 		</band>
 	</title>

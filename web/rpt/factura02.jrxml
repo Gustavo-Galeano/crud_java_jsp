@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="factura" pageWidth="595" pageHeight="623" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75e73a2a-dbcc-4dcc-af7d-c7ca3d1d2a0d">
-	<property name="ireport.zoom" value="1.6105100000000014"/>
+	<property name="ireport.zoom" value="1.0000000000000007"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="204"/>
 	<parameter name="FacturaN" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -248,7 +248,7 @@ where ventas.id_venta=$P{FacturaN}]]>
 				<reportElement x="484" y="1" width="71" height="240" uuid="11bdd71a-c4e8-4f70-a556-2586e68f9a26"/>
 			</rectangle>
 			<subreport>
-				<reportElement x="4" y="2" width="200" height="100" uuid="f3017e90-34b8-4a5b-a378-ecd81057d9c5"/>
+				<reportElement x="4" y="2" width="551" height="65" uuid="f3017e90-34b8-4a5b-a378-ecd81057d9c5"/>
 				<subreportParameter name="factura">
 					<subreportParameterExpression><![CDATA[$P{FacturaN}]]></subreportParameterExpression>
 				</subreportParameter>
